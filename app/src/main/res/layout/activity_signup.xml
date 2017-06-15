@@ -57,7 +57,8 @@
             android:layout_height="20dp"
             android:gravity="center"
             android:layout_marginStart="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <View
                 android:layout_width="15dp"
@@ -95,13 +96,14 @@
                 android:translationZ="-10dp" />
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/step1ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="25dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -173,7 +175,6 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="0.33"
                     android:text="Gender :"
-
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp" />
 
@@ -197,13 +198,18 @@
             </RadioGroup>
 
             <EditText
+                android:id="@+id/height"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:editable="false"
+                android:cursorVisible="false"
                 android:hint="Height" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:editable="false"
+                android:cursorVisible="false"
                 android:hint="Weight" />
 
             <EditText

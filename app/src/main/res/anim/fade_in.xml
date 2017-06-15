@@ -7,7 +7,7 @@
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="1.0"
-        android:startOffset="2700"
+        android:startOffset="2000"
         />
 
 </set>

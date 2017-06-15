@@ -1,22 +1,25 @@
 package in.droidoselabs.myapplication;
 
+import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener, Animation.AnimationListener {
+public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
     private TextView signupText;
     private AppCompatButton nextButtonOne, nextButtonTwo;
     private LinearLayout signup1ll, signup2ll;
     private View rectangleOne, circleOne, rectangleTwo, circleTwo;
     private Animation animFadein, animFadeoutImage, animFadeoutImage2, animFadeout, animFadeinImage;
     private ImageView signupImageOne, signupImageTwo, signupImageThree;
+    private EditText height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         signupImageOne = (ImageView) findViewById(R.id.signupImageOne);
         signupImageTwo = (ImageView) findViewById(R.id.signupImageTwo);
         signupImageThree = (ImageView) findViewById(R.id.signupImageThree);
+        height = (EditText) findViewById(R.id.height);
+
         signupText.setText("SignUp Here !");
         animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fade_in);
@@ -52,6 +57,23 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         animFadeoutImage2.setAnimationListener(this);
         nextButtonOne.setOnClickListener(this);
         nextButtonTwo.setOnClickListener(this);
+        height.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    final Dialog dialog = new Dialog(SignupActivity.this);
+                    dialog.setContentView(R.layout.number_picker);
+                    NumberPicker feet = (NumberPicker) dialog.findViewById(R.id.feet);
+                    NumberPicker inches = (NumberPicker) dialog.findViewById(R.id.inches);
+                    feet.setMaxValue(8);
+                    inches.setMaxValue(11);
+                    feet.setMinValue(1);
+                    feet.setMinValue(1);
+                    dialog.show();
+                }
+
+            }
+        });
 
     }
 
@@ -70,6 +92,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 rectangleOne.setBackgroundResource(R.drawable.rectangle_view_filled);
                 circleOne.setBackgroundResource(R.drawable.circle_view_filled);
                 break;
+
             case R.id.nextButtonTwo:
                 signupImageOne.setVisibility(View.GONE);
                 signupImageTwo.setVisibility(View.GONE);
@@ -78,8 +101,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 signupImageThree.startAnimation(animFadeinImage);
                 rectangleTwo.setBackgroundResource(R.drawable.rectangle_view_filled);
                 circleTwo.setBackgroundResource(R.drawable.circle_view_filled);
-
                 break;
+
 
         }
     }
