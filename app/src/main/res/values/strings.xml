@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mission India Fit</string>
+    <string name="login">Login</string>
+    <string name="signup_prompt_1">New to Mission India Fit ? </string>
+    <string name="signup_prompt_2">SignUp Now !</string>
+    <string name="step_2">Goto Step 2</string>
+    <string name="step_3">Goto Step 3</string>
+</resources>
