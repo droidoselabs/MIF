@@ -23,6 +23,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.signupBtn:
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
                 finish();
         }
     }

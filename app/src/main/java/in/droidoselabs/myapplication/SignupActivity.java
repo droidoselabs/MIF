@@ -33,6 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
 
     private static final int FILE_SELECT_CODE = 0;
+    int heightFeet, heightinches, heightcms, weightkg, weightkgs, weightpounds;
     private TextView signupText;
     private AppCompatButton nextButtonOne, finish;
     private LinearLayout signup1ll, signup2ll;
@@ -42,9 +43,9 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     private CircleImageView profile_image;
     private EditText height, weight, fname, lname, email, password, cpassword, age;
     private RadioGroup radioGroupGender;
-    private boolean isValidated = false;
+    private boolean isValidated = false, isValidatedTwo = false;
     private Uri uri = null;
-    private String displayName;
+    private String displayName, firstName, lastName, eMail, pass, cpass, Age, Height, Weight, bodyType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +96,8 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         bodyThree = (ImageView) findViewById(R.id.body_three);
         profile_image = (CircleImageView) findViewById(R.id.profile_image);
         profile_image.setOnClickListener(this);
-
-
+        bodyType = "Ectomorph";
         radioGroupGender = (RadioGroup) findViewById(R.id.radioGroup);
-
-
         radioGroupGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -132,11 +130,22 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nextButtonOne:
+                firstName = fname.getText().toString().trim();
+                lastName = lname.getText().toString().trim();
+                eMail = email.getText().toString().trim();
+                pass = password.getText().toString().trim();
+                cpass = cpassword.getText().toString().trim();
                 if (isStepOneVerified()) {
                     makeStepTwoVisible();
                 }
                 break;
             case R.id.finish:
+                Age = age.getText().toString().trim();
+                Height = height.getText().toString().trim();
+                Weight = weight.getText().toString().trim();
+                if (isStepTwoValid()) {
+
+                }
                 break;
             case R.id.height:
                 openHeightSelectorPopup();
@@ -146,12 +155,15 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.body_one:
                 selectBodyType("Ectomorph");
+                bodyType = "Ectomorph";
                 break;
             case R.id.body_two:
                 selectBodyType("Mesomorph");
+                bodyType = "Mesomorph";
                 break;
             case R.id.body_three:
                 selectBodyType("Endomorph");
+                bodyType = "Endomorph";
                 break;
             case R.id.profile_image:
                 imageCrop();
@@ -192,9 +204,12 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 if (feetPicker.getVisibility() == View.VISIBLE) {
-                    weight.setText(feet.getValue() + "." + inches.getValue() + " Kgs");
+                    weightkg = feet.getValue();
+                    weightkgs = inches.getValue();
+                    weight.setText(weightkg + "." + weightkgs + " Kgs");
                 } else {
-                    weight.setText(cms.getValue() + " Pounds");
+                    weightpounds = cms.getValue();
+                    weight.setText(weightpounds + " Pounds");
                 }
                 dialog.dismiss();
             }
@@ -248,9 +263,12 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 if (feetPicker.getVisibility() == View.VISIBLE) {
-                    height.setText(feet.getValue() + "' " + inches.getValue() + "\"");
+                    heightFeet = feet.getValue();
+                    heightinches = inches.getValue();
+                    height.setText(heightFeet + "' " + heightinches + "\"");
                 } else {
-                    height.setText(cms.getValue() + " Cms");
+                    heightcms = cms.getValue();
+                    height.setText(heightcms + " Cms");
                 }
                 dialog.dismiss();
             }
@@ -329,12 +347,36 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     }
 
     public boolean isStepOneVerified() {
-
+        if (firstName.length() < 3) {
+            fname.requestFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Enter name with atleast 3 characters !");
+            isValidated = false;
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(eMail).matches()) {
+            email.requestFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Enter a valid email address !");
+            isValidated = false;
+        } else if (pass.length() < 8) {
+            password.requestFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Enter password of atleast 8 alpha-numerics !");
+            isValidated = false;
+        } else if (!pass.equals(cpass)) {
+            cpassword.requestFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Password and Confirm Password Mismatch !");
+            isValidated = false;
+        } else if (uri == null) {
+            showSnackbar("Please set a profile picture !");
+            isValidated = false;
+        } else {
+            isValidated = true;
+        }
         return isValidated;
-
     }
 
-    public void onSnackbarClicked(String message) {
+    public void showSnackbar(String message) {
         Snackbar snackbar = Snackbar
                 .make(signup1ll, message, Snackbar.LENGTH_LONG);
 
@@ -362,5 +404,36 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                 Exception error = result.getError();
             }
         }
+    }
+
+    public boolean isStepTwoValid() {
+        if (Height.length() < 1) {
+            openHeightSelectorPopup();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Please Enter your height !");
+            isValidatedTwo = false;
+        } else if (Weight.length() < 1) {
+            openWeightSelectorPopup();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Please enter your weight !");
+            isValidatedTwo = false;
+        } else if (Age.length() < 1) {
+            age.requestFocus();
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            showSnackbar("Please enter your age!");
+            isValidatedTwo = false;
+        }
+        else {
+            isValidatedTwo=true;
+        }
+        return isValidatedTwo;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+        overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+        finish();
     }
 }
