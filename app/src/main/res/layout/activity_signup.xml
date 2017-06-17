@@ -13,32 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="50dp"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/signupImageOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_exercise" />
+
         <ImageView
             android:id="@+id/signupImageTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_scale"
-            android:visibility="gone"/>
-        <ImageView
-            android:id="@+id/signupImageThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_brawn"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
     </LinearLayout>
 
     <android.support.v7.widget.CardView
@@ -55,10 +49,10 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:gravity="center"
             android:layout_marginStart="20dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <View
                 android:layout_width="15dp"
@@ -101,16 +95,20 @@
             android:id="@+id/step1ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             android:visibility="visible">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <EditText
+                    android:id="@+id/et_fname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
@@ -118,49 +116,13 @@
                     android:hint="First Name" />
 
                 <EditText
+                    android:id="@+id/et_lname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_weight="0.5"
                     android:hint="Last Name" />
             </LinearLayout>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:inputType="textPassword" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/nextButtonOne"
-                style="@style/CustomButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
-                android:text="@string/step_2" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/step2ll"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -172,11 +134,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="0.33"
                     android:text="Gender :"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="20sp" />
+                    android:textColor="#9E9E9E"
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/male"
@@ -198,34 +160,150 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/height"
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:cursorVisible="false"
-                android:hint="Height" />
+                android:hint="Email" />
 
             <EditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:cursorVisible="false"
-                android:hint="Weight" />
+                android:hint="Password"
+                android:inputType="textPassword" />
 
             <EditText
+                android:id="@+id/et_cpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Age" />
+                android:hint="Confirm Password"
+                android:inputType="textPassword" />
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/nextButtonTwo"
+                android:id="@+id/nextButtonOne"
                 style="@style/CustomButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
-                android:text="@string/step_3" />
+                android:text="@string/step_2" />
 
 
         </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/step2ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Body Type :"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/body_one"
+                            android:layout_width="50dp"
+                            android:layout_height="110dp"
+                            android:src="@drawable/boy_one" />
+
+                        <ImageView
+                            android:id="@+id/chech_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/ic_done_black_24dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/body_two"
+                            android:layout_width="50dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="55dp"
+                            android:src="@drawable/boy_two" />
+
+                        <ImageView
+                            android:id="@+id/check_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/ic_done_black_24dp"
+                            android:visibility="invisible" />
+
+                        <ImageView
+                            android:id="@+id/body_three"
+                            android:layout_width="50dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="55dp"
+                            android:src="@drawable/boy_three" />
+
+                        <ImageView
+                            android:id="@+id/check_three"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-15dp"
+                            android:layout_marginTop="-5dp"
+                            android:src="@drawable/ic_done_black_24dp"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:editable="false"
+                    android:hint="Height" />
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Weight"
+                    android:inputType="numberDecimal" />
+
+                <EditText
+                    android:id="@+id/et_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Age"
+                    android:imeOptions="actionDone"
+                    android:inputType="number" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/finish"
+                    style="@style/CustomButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/finish" />
+
+
+            </LinearLayout>
+        </ScrollView>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

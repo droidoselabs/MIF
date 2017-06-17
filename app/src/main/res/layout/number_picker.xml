@@ -3,16 +3,38 @@
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-<ToggleButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="end"
-    android:textOn="Cms"
-    android:textOff="feet"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue">
+
+        <TextView
+            android:id="@+id/height_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.40"
+            android:text="Feet / Cms"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/change_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp" />
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/feetPicker"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <NumberPicker
             android:id="@+id/feet"
@@ -20,8 +42,8 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
-            android:clickable="false"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            android:descendantFocusability="blocksDescendants" />
 
         <NumberPicker
             android:id="@+id/inches"
@@ -29,7 +51,27 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="0.5"
-            android:clickable="false"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            android:descendantFocusability="blocksDescendants" />
     </LinearLayout>
+
+    <NumberPicker
+        android:id="@+id/cms"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:clickable="false"
+        android:descendantFocusability="blocksDescendants"
+        android:visibility="gone" />
+    />
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/closeDialog"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        style="@style/CustomButton"
+        android:text="Done"
+        />
 </LinearLayout>
+
+
