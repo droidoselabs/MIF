@@ -1,7 +1,9 @@
 package in.droidoselabs.myapplication;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.Snackbar;
@@ -23,16 +25,26 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
+
+    private static final int FILE_SELECT_CODE = 0;
     private TextView signupText;
     private AppCompatButton nextButtonOne, finish;
     private LinearLayout signup1ll, signup2ll;
     private View rectangleOne, circleOne, rectangleTwo, circleTwo;
     private Animation animFadein, animFadeoutImage, animFadeoutImage2, animFadeout, animFadeinImage;
-    private ImageView signupImageOne, signupImageTwo, checkOne, checkTwo, checkThree, bodyOne, bodyTwo, bodyThree,avatarOne,avatarTwo,avatarThree,avatarFour;
+    private ImageView signupImageOne, signupImageTwo, checkOne, checkTwo, checkThree, bodyOne, bodyTwo, bodyThree;
+    private CircleImageView profile_image;
     private EditText height, weight, fname, lname, email, password, cpassword, age;
     private RadioGroup radioGroupGender;
-    private boolean isValidated=false;
+    private boolean isValidated = false;
+    private Uri uri = null;
+    private String displayName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +93,9 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         bodyOne = (ImageView) findViewById(R.id.body_one);
         bodyTwo = (ImageView) findViewById(R.id.body_two);
         bodyThree = (ImageView) findViewById(R.id.body_three);
-;
+        profile_image = (CircleImageView) findViewById(R.id.profile_image);
+        profile_image.setOnClickListener(this);
+
 
         radioGroupGender = (RadioGroup) findViewById(R.id.radioGroup);
 
@@ -118,7 +132,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nextButtonOne:
-                if (isStepOneVerified()){
+                if (isStepOneVerified()) {
                     makeStepTwoVisible();
                 }
                 break;
@@ -138,6 +152,9 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.body_three:
                 selectBodyType("Endomorph");
+                break;
+            case R.id.profile_image:
+                imageCrop();
                 break;
             default:
                 break;
@@ -311,7 +328,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    public boolean isStepOneVerified(){
+    public boolean isStepOneVerified() {
 
         return isValidated;
 
@@ -324,4 +341,26 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         snackbar.show();
     }
 
+
+    private void imageCrop() {
+        uri = null;
+        CropImage.activity(uri)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setCropShape(CropImageView.CropShape.OVAL)
+                .setAspectRatio(1, 1)
+                .start(this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                uri = result.getUri();
+                profile_image.setImageURI(uri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+    }
 }
