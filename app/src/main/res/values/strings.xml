@@ -6,4 +6,5 @@
     <string name="step_2">Goto Step 2</string>
     <string name="finish">Finish</string>
     <string name="forgot_password">Forgot Password ?</string>
+    <string name="verify_email">Your email has not been verified yet ! Click on Verify Email to verify your email.</string>
 </resources>

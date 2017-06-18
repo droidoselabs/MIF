@@ -51,7 +51,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
 
-    private static final int FILE_SELECT_CODE = 0;
     private static final String TAG = "SignUpActivity";
     int heightFeet, heightinches, heightcms, weightkg, weightkgs, weightpounds;
     private TextView signupText;
@@ -220,16 +219,17 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                             updateUI(user);
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            if(!task.isSuccessful()) {
+                            if (!task.isSuccessful()) {
+                                mProgressDialog.dismiss();
                                 try {
                                     throw task.getException();
-                                } catch(FirebaseAuthWeakPasswordException e) {
+                                } catch (FirebaseAuthWeakPasswordException e) {
                                     showSnackbar("Weak Password !");
-                                } catch(FirebaseAuthInvalidCredentialsException e) {
+                                } catch (FirebaseAuthInvalidCredentialsException e) {
                                     showSnackbar("Invalid Email !");
-                                } catch(FirebaseAuthUserCollisionException e) {
+                                } catch (FirebaseAuthUserCollisionException e) {
                                     showSnackbar("User Already Exists !");
-                                } catch(Exception e) {
+                                } catch (Exception e) {
                                     Log.e(TAG, e.getMessage());
                                 }
                             }
@@ -531,10 +531,10 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                     userdata.put("Height", heightCms);
                     userdata.put("Weight", weightPounds);
                     userdata.put("Age", Age);
-                    userdata.put("BodyType",bodyType);
+                    userdata.put("BodyType", bodyType);
                     signupRef.setValue(userdata);
                     mProgressDialog.dismiss();
-                    startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
             });
 
