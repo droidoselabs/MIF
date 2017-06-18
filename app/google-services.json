@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "546863199248",
+    "firebase_url": "https://missionindiafit-6b766.firebaseio.com",
+    "project_id": "missionindiafit-6b766",
+    "storage_bucket": "missionindiafit-6b766.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546863199248:android:b4fa0722050a6da4",
+        "android_client_info": {
+          "package_name": "in.droidoselabs.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546863199248-7m3qjd395peu7h8su2ntn4li97vg49c5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALs7gFkKi19hfhjSp_vRuW8LG7Nf3uFFM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

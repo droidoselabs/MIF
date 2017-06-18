@@ -1,17 +1,20 @@
 package in.droidoselabs.myapplication;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -25,14 +28,31 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
 
     private static final int FILE_SELECT_CODE = 0;
+    private static final String TAG = "SignUpActivity";
     int heightFeet, heightinches, heightcms, weightkg, weightkgs, weightpounds;
     private TextView signupText;
     private AppCompatButton nextButtonOne, finish;
@@ -46,11 +66,16 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
     private boolean isValidated = false, isValidatedTwo = false;
     private Uri uri = null;
     private String displayName, firstName, lastName, eMail, pass, cpass, Age, Height, Weight, bodyType;
+    private FirebaseAuth mAuth;
+    private DatabaseReference signupRef;
+    private StorageReference mStorage;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        firebaseInit();
         init();
         animFadein.setAnimationListener(this);
         animFadeout.setAnimationListener(this);
@@ -68,7 +93,15 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+    private void firebaseInit() {
+        mAuth = FirebaseAuth.getInstance();
+        signupRef = FirebaseDatabase.getInstance().getReference().child("UsersData");
+        mStorage = FirebaseStorage.getInstance().getReference();
+
+    }
+
     private void init() {
+        mProgressDialog = new ProgressDialog(this);
         signupText = (TextView) findViewById(R.id.toolbarText);
         nextButtonOne = (AppCompatButton) findViewById(R.id.nextButtonOne);
         finish = (AppCompatButton) findViewById(R.id.finish);
@@ -144,7 +177,10 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                 Height = height.getText().toString().trim();
                 Weight = weight.getText().toString().trim();
                 if (isStepTwoValid()) {
-
+                    mProgressDialog.setMessage("Registering to Mission India Fit");
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.show();
+                    firebaseSignup();
                 }
                 break;
             case R.id.height:
@@ -171,6 +207,37 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
             default:
                 break;
         }
+    }
+
+    private void firebaseSignup() {
+        mAuth.createUserWithEmailAndPassword(eMail, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            if(!task.isSuccessful()) {
+                                try {
+                                    throw task.getException();
+                                } catch(FirebaseAuthWeakPasswordException e) {
+                                    showSnackbar("Weak Password !");
+                                } catch(FirebaseAuthInvalidCredentialsException e) {
+                                    showSnackbar("Invalid Email !");
+                                } catch(FirebaseAuthUserCollisionException e) {
+                                    showSnackbar("User Already Exists !");
+                                } catch(Exception e) {
+                                    Log.e(TAG, e.getMessage());
+                                }
+                            }
+                            updateUI(null);
+                        }
+                    }
+                });
+
     }
 
     private void selectBodyType(String bodyType) {
@@ -422,9 +489,8 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
             this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             showSnackbar("Please enter your age!");
             isValidatedTwo = false;
-        }
-        else {
-            isValidatedTwo=true;
+        } else {
+            isValidatedTwo = true;
         }
         return isValidatedTwo;
     }
@@ -435,5 +501,44 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
         finish();
+    }
+
+    public void updateUI(FirebaseUser user) {
+        if (user != null) {
+            final HashMap<String, String> userdata = new HashMap<>();
+            final String[] name = new String[1];
+            final String heightCms;
+            final String weightPounds;
+
+            if (heightcms > 0) {
+                heightCms = String.valueOf(heightcms);
+            } else {
+                heightCms = String.valueOf((heightFeet * 30.48) + (heightinches * 2.54));
+            }
+
+            if (weightpounds > 0) {
+                weightPounds = String.valueOf(weightpounds);
+            } else {
+                weightPounds = String.valueOf((weightkg * 2.204) + (weightkgs * 0.2204));
+            }
+            StorageReference storageReference = mStorage.child("UserProfileImages").child(eMail);
+            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    name[0] = firstName + " " + lastName;
+                    userdata.put("Name", name[0].trim());
+                    userdata.put("Email", eMail);
+                    userdata.put("Height", heightCms);
+                    userdata.put("Weight", weightPounds);
+                    userdata.put("Age", Age);
+                    userdata.put("BodyType",bodyType);
+                    signupRef.setValue(userdata);
+                    mProgressDialog.dismiss();
+                    startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                }
+            });
+
+        }
+
     }
 }
