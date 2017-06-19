@@ -78,7 +78,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             mProgressDialog.dismiss();
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             if (user.isEmailVerified()) {
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                             } else {
                                 startActivity(new Intent(LoginActivity.this, VerifyEmailActivity.class));
                             }
