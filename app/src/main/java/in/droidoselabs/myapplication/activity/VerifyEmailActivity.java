@@ -1,4 +1,4 @@
-package in.droidoselabs.myapplication;
+package in.droidoselabs.myapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import in.droidoselabs.myapplication.R;
 
 public class VerifyEmailActivity extends BaseActivity implements View.OnClickListener {
     private AppCompatButton verifyEmail;

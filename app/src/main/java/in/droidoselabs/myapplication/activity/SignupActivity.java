@@ -1,4 +1,4 @@
-package in.droidoselabs.myapplication;
+package in.droidoselabs.myapplication.activity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -48,6 +48,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import in.droidoselabs.myapplication.R;
 
 public class SignupActivity extends BaseActivity implements View.OnClickListener, Animation.AnimationListener {
 
@@ -284,7 +285,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
         final Spannable text = new SpannableString("Kgs / Pounds");
         text.setSpan(new ForegroundColorSpan(Color.WHITE), 6, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         heightText.setText(text);
         switchs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -293,13 +294,13 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                     cms.setVisibility(View.VISIBLE);
                     feetPicker.setVisibility(View.GONE);
                     text.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 6, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 6, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     heightText.setText(text);
                 } else {
                     cms.setVisibility(View.GONE);
                     feetPicker.setVisibility(View.VISIBLE);
                     text.setSpan(new ForegroundColorSpan(Color.WHITE), 6, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 0, 4, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     heightText.setText(text);
                 }
             }
@@ -343,7 +344,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
         final Spannable text = new SpannableString("Feet / Cms");
         text.setSpan(new ForegroundColorSpan(Color.WHITE), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         heightText.setText(text);
         switchs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -351,14 +352,14 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                 if (isChecked) {
                     cms.setVisibility(View.VISIBLE);
                     feetPicker.setVisibility(View.GONE);
-                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     text.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     heightText.setText(text);
                 } else {
                     cms.setVisibility(View.GONE);
                     feetPicker.setVisibility(View.VISIBLE);
                     text.setSpan(new ForegroundColorSpan(Color.WHITE), 7, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    text.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.darkBlue)), 0, 5, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     heightText.setText(text);
                 }
             }

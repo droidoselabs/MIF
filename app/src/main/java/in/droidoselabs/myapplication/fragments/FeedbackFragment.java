@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 
 import in.droidoselabs.myapplication.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NutritionInfoFragment extends Fragment {
+public class FeedbackFragment extends Fragment {
 
 
-    public NutritionInfoFragment() {
+    public FeedbackFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +24,7 @@ public class NutritionInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.feed_item_row, container, false);
+        return inflater.inflate(R.layout.fragment_feedback, container, false);
     }
 
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.droidoselabs.myapplication.LoginActivity">
+    tools:context="in.droidoselabs.myapplication.activity.LoginActivity">
 
     <include layout="@layout/custom_app_bar" />
 
@@ -76,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:text="@string/signup_prompt_2"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/darkBlue" />
             </LinearLayout>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/forgot_password"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/darkBlue" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

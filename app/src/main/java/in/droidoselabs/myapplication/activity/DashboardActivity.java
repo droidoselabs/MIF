@@ -1,5 +1,6 @@
-package in.droidoselabs.myapplication;
+package in.droidoselabs.myapplication.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +22,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
+import in.droidoselabs.myapplication.R;
+import in.droidoselabs.myapplication.fragments.FeedbackFragment;
+import in.droidoselabs.myapplication.fragments.HomeFragment;
 import in.droidoselabs.myapplication.fragments.NutritionInfoFragment;
+import in.droidoselabs.myapplication.fragments.ProfileFragment;
 import in.droidoselabs.myapplication.fragments.RecipeFragment;
+import in.droidoselabs.myapplication.fragments.WorkoutFragment;
 import in.droidoselabs.myapplication.model.SliderItemModel;
 import in.droidoselabs.myapplication.utils.SlideMenu;
 
@@ -39,10 +45,12 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
     private Fragment currentFragment;
     private int mSlideState;
     private float mOffsetPercent;
+
     /* Views */
-    private ImageView btMenu;
+    private ImageView btMenu, btnCustom;
     private RecyclerView rvItems;
     private ArrayList<SliderItemModel> menuItems;
+    private int fragmentCode;
 
 
     @Override
@@ -70,6 +78,26 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
                 }
             });
 
+            btnCustom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Dialog dialog = new Dialog(DashboardActivity.this);
+                    if (fragmentCode == 0) {
+                        startActivity(new Intent(DashboardActivity.this,AddFeedActivity.class));
+                        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+                    } else if (fragmentCode == 1) {
+                        dialog.setContentView(R.layout.add_recipe_dialog);
+                        dialog.show();
+                    } else if (fragmentCode == 2) {
+
+                    } else if (fragmentCode == 3) {
+
+                    } else if (fragmentCode == 4) {
+
+                    }
+                }
+            });
+
             LinearLayout sliderMenuParent = (LinearLayout) findViewById(R.id.sliderMenuParent);
             DisplayMetrics dm = getResources().getDisplayMetrics();
             final int val1 = 80;
@@ -85,6 +113,7 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
 
     private void initViews() {
         btMenu = (ImageView) findViewById(R.id.btnMenu);
+        btnCustom = (ImageView) findViewById(R.id.btnCustom);
         rvItems = (RecyclerView) findViewById(R.id.rvItems);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
     }
@@ -108,9 +137,7 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
         mSlideMenu = (SlideMenu) findViewById(R.id.slideMenu);
         setSlideRole(R.layout.slider_menu);
         setSlideRole(R.layout.activity_dashboard);
-
         mSlideMenu = getSlideMenu();
-
         getSlideMenu().setOnSlideStateChangeListener(this);
 
     }
@@ -161,21 +188,23 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
     }
 
     private void setupMenu() {
-        String[] menuArr = new String[6];
+        String[] menuArr = new String[7];
         menuArr[0] = getString(R.string.home);
         menuArr[1] = getString(R.string.recipe);
         menuArr[2] = getString(R.string.workout);
         menuArr[3] = getString(R.string.nutritionInfo);
         menuArr[4] = getString(R.string.profile);
         menuArr[5] = getString(R.string.feedback);
+        menuArr[6] = getString(R.string.logout);
 
-        Integer[] iconArr = new Integer[6];
+        Integer[] iconArr = new Integer[7];
         iconArr[0] = R.drawable.ic_006_home;
         iconArr[1] = R.drawable.ic_005_chef;
         iconArr[2] = R.drawable.ic_004_dumbbell_with_weights_outline;
         iconArr[3] = R.drawable.ic_003_milk_products;
         iconArr[4] = R.drawable.ic_002_dumbbell;
-        iconArr[5] = R.drawable.ic_001_mail_reply_all_symbol_for_interface;
+        iconArr[5] = R.drawable.ic_message;
+        iconArr[6] = R.drawable.ic_logout;
 
         menuItems = new ArrayList<>();
 
@@ -196,24 +225,34 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
 
 
     public void performAction(int position) {
-
+        fragmentCode = position;
         if (!menuItems.get(position).isSelected()) {
             if (position == 0) {
                 tvTitle.setText(menuItems.get(position).getName().toUpperCase());
-                startFragment(new RecipeFragment(), position);
+                startFragment(new HomeFragment(), position);
             } else if (position == 1) {
                 tvTitle.setText(menuItems.get(position).getName().toUpperCase());
-                startFragment(new NutritionInfoFragment(), position);
+                startFragment(new RecipeFragment(), position);
                 mSlideMenu.close(true);
             } else if (position == 2) {
                 tvTitle.setText(menuItems.get(position).getName().toUpperCase());
-
+                startFragment(new WorkoutFragment(), position);
+                mSlideMenu.close(true);
             } else if (position == 3) {
-
+                tvTitle.setText(menuItems.get(position).getName().toUpperCase());
+                startFragment(new NutritionInfoFragment(), position);
+                mSlideMenu.close(true);
+            } else if (position == 4) {
+                tvTitle.setText(menuItems.get(position).getName().toUpperCase());
+                startFragment(new ProfileFragment(), position);
+                mSlideMenu.close(true);
             } else if (position == 5) {
-
+                tvTitle.setText(menuItems.get(position).getName().toUpperCase());
+                startFragment(new FeedbackFragment(), position);
+                mSlideMenu.close(true);
             }
         }
+
     }
 
     @Override

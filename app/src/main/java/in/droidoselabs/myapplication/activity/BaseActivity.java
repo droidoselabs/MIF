@@ -1,4 +1,4 @@
-package in.droidoselabs.myapplication;
+package in.droidoselabs.myapplication.activity;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;

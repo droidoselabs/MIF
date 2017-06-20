@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <View
+                    android:id="@+id/image_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/demo_dark_transparent" />
+            </LinearLayout>
+            a
+
+            <LinearLayout
+                android:id="@+id/layout_two"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/image_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@color/demo_dark_transparent" />
+
+                    <View
+                        android:id="@+id/image_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@color/demo_dark_transparent" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_three"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33"
+                android:paddingEnd="5dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:id="@+id/image_four"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@color/demo_dark_transparent" />
+
+                    <View
+                        android:id="@+id/image_five"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="2dp"
+                        android:layout_weight="0.5"
+                        android:background="@color/demo_dark_transparent" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <View
+                style="@style/CustomText"
+                android:layout_weight="0.33"
+                android:background="@color/demo_dark_transparent"
+                android:drawableStart="@drawable/ic_rep_light"
+                android:text="Rep" />
+
+            <View
+                style="@style/CustomText"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="0.33"
+                android:background="@color/demo_dark_transparent"
+                android:drawableStart="@drawable/ic_comment_dark"
+                android:text="Comment" />
+
+            <View
+                style="@style/CustomText"
+                android:layout_weight="0.33"
+                android:background="@color/demo_dark_transparent"
+                android:drawableStart="@drawable/ic_share_dark"
+                android:text="Share" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,4 +1,4 @@
-package in.droidoselabs.myapplication;
+package in.droidoselabs.myapplication.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+
+import in.droidoselabs.myapplication.R;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "LoginActivity";

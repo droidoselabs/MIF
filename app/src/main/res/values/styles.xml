@@ -13,12 +13,35 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">24sp</item>
     </style>
+
     <style name="CustomButton">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">20sp</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomText">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+    </style>
+
+    <style name="FeedImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:alpha">0.6</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/test</item>
+    </style>
+
+    <style name="LinearLayoutFeed">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.33</item>
     </style>
 
 </resources>

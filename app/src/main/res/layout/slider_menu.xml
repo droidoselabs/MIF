@@ -20,7 +20,6 @@
             android:background="@color/blue"
             android:clickable="true"
             android:gravity="center"
-            android:onClick="onClick"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -40,6 +39,18 @@
                 android:text="Rajat Dhamija"
                 android:textColor="@color/white"
                 android:textSize="24sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Edit Profile"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_edit_black_24dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
 

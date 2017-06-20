@@ -9,17 +9,12 @@ import android.view.ViewGroup;
 
 import in.droidoselabs.myapplication.R;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RecipeFragment extends Fragment {
 
 
     public RecipeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

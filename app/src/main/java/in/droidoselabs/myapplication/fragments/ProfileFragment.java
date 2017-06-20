@@ -9,23 +9,17 @@ import android.view.ViewGroup;
 
 import in.droidoselabs.myapplication.R;
 
+public class ProfileFragment extends Fragment {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class NutritionInfoFragment extends Fragment {
-
-
-    public NutritionInfoFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.feed_item_row, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
 }
