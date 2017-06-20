@@ -21,13 +21,15 @@
             android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".activity.VerifyEmailActivity" />
         <activity android:name=".activity.DashboardActivity">
+
+        </activity>
+        <activity android:name=".activity.AddFeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AddFeedActivity"></activity>
         <activity android:name="com.gun0912.tedpicker.ImagePickerActivity"
             android:screenOrientation="portrait"
             />

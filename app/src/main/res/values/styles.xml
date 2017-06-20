@@ -30,7 +30,9 @@
         <item name="android:drawablePadding">5dp</item>
     </style>
 
+
     <style name="FeedImage">
+        <item name="android:visibility">gone</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:scaleType">centerCrop</item>
@@ -38,6 +40,7 @@
     </style>
 
     <style name="LinearLayoutFeed">
+
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">0.33</item>
