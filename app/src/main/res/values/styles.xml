@@ -33,7 +33,6 @@
     <style name="FeedImage">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:alpha">0.6</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:src">@drawable/test</item>
     </style>

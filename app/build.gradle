@@ -20,6 +20,11 @@ android {
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }
+
+        maven { url 'https://repo.commonsware.com.s3.amazonaws.com' }
+        maven { url 'https://jitpack.io' }
+        maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+
     }
 }
 
@@ -40,6 +45,7 @@ dependencies {
     compile 'com.google.firebase:firebase-storage:10.2.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.sharish:ShimmerRecyclerView:v1.0'
+    compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
