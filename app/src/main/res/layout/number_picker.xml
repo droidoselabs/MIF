@@ -65,13 +65,13 @@
         android:descendantFocusability="blocksDescendants"
         android:visibility="gone" />
     />
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/closeDialog"
+        style="@style/CustomButton"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        style="@style/CustomButton"
-        android:text="Done"
-        />
+        android:text="Done" />
 </LinearLayout>
 
 

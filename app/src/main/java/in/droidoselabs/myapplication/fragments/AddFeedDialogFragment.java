@@ -1,11 +1,14 @@
-package in.droidoselabs.myapplication.activity;
+package in.droidoselabs.myapplication.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,27 +20,30 @@ import java.util.ArrayList;
 
 import in.droidoselabs.myapplication.R;
 
-public class AddFeedActivity extends AppCompatActivity {
+/**
+ * Created by android on 6/22/17.
+ */
 
-    private static final int INTENT_REQUEST_GET_IMAGES = 13;
-
+public class AddFeedDialogFragment extends DialogFragment {
     private static final String TAG = "TedPicker";
+    private static final int INTENT_REQUEST_GET_IMAGES = 13;
     ArrayList<Uri> image_uris = new ArrayList<Uri>();
-    private LinearLayout getImages, parentLayout, childLayoutOne, childLayoutTwo;
+    private LinearLayout getImage, parentLayout, childLayoutOne, childLayoutTwo;
     private ImageView ivOne, ivTwo, ivThree, ivFour, ivFive;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_feed_dialog);
-        init();
-
-
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.add_feed_dialog, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        init(view);
+        builder.setView(view);
+        return builder.create();
     }
 
-    private void init() {
-        getImages = (LinearLayout) findViewById(R.id.getImages);
-        getImages.setOnClickListener(new View.OnClickListener() {
+    private void init(View view) {
+        getImage = (LinearLayout) view.findViewById(R.id.getImages);
+        getImage.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -48,15 +54,15 @@ public class AddFeedActivity extends AppCompatActivity {
                 getImages(config);
             }
         });
-        parentLayout = (LinearLayout) findViewById(R.id.parent_layout);
-        childLayoutOne = (LinearLayout) findViewById(R.id.layout_two);
-        childLayoutTwo = (LinearLayout) findViewById(R.id.layout_three);
+        parentLayout = (LinearLayout) view.findViewById(R.id.parent_layout);
+        childLayoutOne = (LinearLayout) view.findViewById(R.id.layout_two);
+        childLayoutTwo = (LinearLayout) view.findViewById(R.id.layout_three);
         //image Views
-        ivTwo = (ImageView) findViewById(R.id.image_two);
-        ivThree = (ImageView) findViewById(R.id.image_three);
-        ivFour = (ImageView) findViewById(R.id.image_four);
-        ivFive = (ImageView) findViewById(R.id.image_five);
-        ivOne = (ImageView) findViewById(R.id.image_one);
+        ivTwo = (ImageView) view.findViewById(R.id.image_two);
+        ivThree = (ImageView) view.findViewById(R.id.image_three);
+        ivFour = (ImageView) view.findViewById(R.id.image_four);
+        ivFive = (ImageView) view.findViewById(R.id.image_five);
+        ivOne = (ImageView) view.findViewById(R.id.image_one);
 
 
     }
@@ -66,7 +72,7 @@ public class AddFeedActivity extends AppCompatActivity {
 
         ImagePickerActivity.setConfig(config);
 
-        Intent intent = new Intent(this, ImagePickerActivity.class);
+        Intent intent = new Intent(getActivity(), ImagePickerActivity.class);
 
         if (image_uris != null) {
             intent.putParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS, image_uris);
@@ -75,9 +81,8 @@ public class AddFeedActivity extends AppCompatActivity {
 
     }
 
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
 
@@ -144,6 +149,5 @@ public class AddFeedActivity extends AppCompatActivity {
 
         }
     }
-
-
 }
+

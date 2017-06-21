@@ -1,6 +1,5 @@
 package in.droidoselabs.myapplication.activity;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 import in.droidoselabs.myapplication.R;
+import in.droidoselabs.myapplication.fragments.AddFeedDialogFragment;
+import in.droidoselabs.myapplication.fragments.AddRecipeFragment;
 import in.droidoselabs.myapplication.fragments.FeedbackFragment;
 import in.droidoselabs.myapplication.fragments.HomeFragment;
 import in.droidoselabs.myapplication.fragments.NutritionInfoFragment;
@@ -81,19 +82,22 @@ public class DashboardActivity extends BaseActivity implements SlideMenu.OnSlide
             btnCustom.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Dialog dialog = new Dialog(DashboardActivity.this);
+                    android.app.FragmentManager fragmentManager = getFragmentManager();
                     if (fragmentCode == 0) {
-                        startActivity(new Intent(DashboardActivity.this,AddFeedActivity.class));
-                        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+                        AddFeedDialogFragment addFeedDialogFragment = new AddFeedDialogFragment();
+                        addFeedDialogFragment.show(fragmentManager, "AddFeedDialog");
                     } else if (fragmentCode == 1) {
-                        dialog.setContentView(R.layout.add_recipe_dialog);
-                        dialog.show();
+                        AddRecipeFragment addRecipeFragment = new AddRecipeFragment();
+                        addRecipeFragment.show(fragmentManager, "AddRecipeDialog");
                     } else if (fragmentCode == 2) {
-
+                        AddFeedDialogFragment newTermDialogFragment = new AddFeedDialogFragment();
+                        newTermDialogFragment.show(fragmentManager, "Dialog");
                     } else if (fragmentCode == 3) {
-
+                        AddFeedDialogFragment newTermDialogFragment = new AddFeedDialogFragment();
+                        newTermDialogFragment.show(fragmentManager, "Dialog");
                     } else if (fragmentCode == 4) {
-
+                        AddFeedDialogFragment newTermDialogFragment = new AddFeedDialogFragment();
+                        newTermDialogFragment.show(fragmentManager, "Dialog");
                     }
                 }
             });

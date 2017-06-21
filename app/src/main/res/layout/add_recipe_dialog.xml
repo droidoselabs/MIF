@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="125dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
@@ -30,7 +30,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_camera_shutter" />
 
@@ -40,7 +40,8 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Click to select image"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:textSize="12dp"/>
             </LinearLayout>
 
             <LinearLayout

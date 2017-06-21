@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="in.droidoselabs.myapplication.activity.SplashScreenActivity">
+
+    <com.github.jorgecastillo.FillableLoader
+        android:id="@+id/fillableLoader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fl_clippingTransform="waves"
+        app:fl_fillColor="@color/colorPrimary"
+        app:fl_fillDuration="2000"
+        app:fl_fillPercentage="50"
+        app:fl_originalHeight="900"
+        app:fl_originalWidth="1200"
+        app:fl_strokeColor="@android:color/black"
+        app:fl_strokeDrawingDuration="2000"
+        app:fl_strokeWidth="4dp" />
+</LinearLayout>
