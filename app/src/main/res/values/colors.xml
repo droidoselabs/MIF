@@ -7,4 +7,5 @@
     <color name="lightBlue">#90A4AE</color>
     <color name="white">@android:color/white</color>
     <color name="blue">#455A64</color>
+    <color name="lightGray">#BDBDBD</color>
 </resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.droidoselabs.myapplication.activity.ProfileActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="60dp"
+            android:background="@drawable/circular_button"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+        </LinearLayout>
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0.33"
+            attrs:dynamicCount="true"
+            attrs:piv_animationType="worm"
+            android:layout_gravity="center"
+            attrs:piv_selectedColor="@color/colorPrimary"
+            attrs:piv_unselectedColor="#B0BEC5"
+            attrs:piv_viewPager="@id/pager" />
+
+        <LinearLayout
+            android:id="@+id/nextBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circular_button"
+            android:layout_marginEnd="60dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/lastPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward_black_24dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:visibility="gone">-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/backBtn"-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginEnd="20dp"-->
+    <!--android:background="@drawable/circular_button"-->
+    <!--android:gravity="center">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/ic_arrow_back_black_24dp" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:id="@+id/page_one"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:background="@drawable/circular_view_light" />-->
+
+    <!--<View-->
+    <!--android:id="@+id/page_two"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginStart="5dp"-->
+    <!--android:background="@drawable/circular_view_light" />-->
+
+    <!--<View-->
+    <!--android:id="@+id/page_three"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginStart="5dp"-->
+    <!--android:background="@drawable/circular_view_light" />-->
+
+    <!--<View-->
+    <!--android:id="@+id/page_four"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginStart="5dp"-->
+    <!--android:background="@drawable/circular_view_light" />-->
+
+    <!--<View-->
+    <!--android:id="@+id/page_five"-->
+    <!--android:layout_width="10dp"-->
+    <!--android:layout_height="10dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginStart="5dp"-->
+    <!--android:background="@drawable/circular_view_light" />-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/nextBtn"-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginStart="20dp"-->
+    <!--android:background="@drawable/circular_button"-->
+    <!--android:gravity="center">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/lastPage"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/ic_arrow_forward_black_24dp" />-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+</RelativeLayout>
