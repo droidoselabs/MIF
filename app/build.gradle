@@ -49,6 +49,7 @@ dependencies {
     compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
     compile 'com.github.jorgecastilloprz:fillableloaders:1.03@aar'
     compile 'com.romandanylyk:pageindicatorview:0.0.8@aar'
+    compile 'com.github.florent37:materialtextfield:1.0.7'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

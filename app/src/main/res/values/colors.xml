@@ -8,4 +8,5 @@
     <color name="white">@android:color/white</color>
     <color name="blue">#455A64</color>
     <color name="lightGray">#BDBDBD</color>
+    <color name="fragementBg">#25292D</color>
 </resources>

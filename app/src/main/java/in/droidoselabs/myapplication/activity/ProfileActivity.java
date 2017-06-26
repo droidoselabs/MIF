@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,9 +13,10 @@ import android.widget.LinearLayout;
 
 import in.droidoselabs.myapplication.R;
 import in.droidoselabs.myapplication.fragments.AgeFragment;
-import in.droidoselabs.myapplication.fragments.GenderFragment;
-import in.droidoselabs.myapplication.fragments.HeightFragment;
+import in.droidoselabs.myapplication.fragments.IntroFragment;
 import in.droidoselabs.myapplication.fragments.ProfileImageFragment;
+import in.droidoselabs.myapplication.fragments.HeightFragment;
+import in.droidoselabs.myapplication.fragments.GenderFragment;
 import in.droidoselabs.myapplication.fragments.WeightFragment;
 
 public class ProfileActivity extends BaseActivity implements Animation.AnimationListener {
@@ -164,7 +164,7 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
         public Fragment getItem(int position) {
             /** Show a Fragment based on the position of the current screen */
             if (position == 0) {
-                return new ProfileImageFragment();
+                return new IntroFragment();
             } else if (position == 1) {
                 return new GenderFragment();
             } else if (position == 2) {
@@ -174,7 +174,7 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
             } else if (position == 4) {
                 return new HeightFragment();
             } else {
-                return new GenderFragment();
+                return new ProfileImageFragment();
             }
         }
 
