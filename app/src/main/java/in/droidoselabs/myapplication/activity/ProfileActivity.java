@@ -19,7 +19,7 @@ import in.droidoselabs.myapplication.fragments.HeightFragment;
 import in.droidoselabs.myapplication.fragments.GenderFragment;
 import in.droidoselabs.myapplication.fragments.WeightFragment;
 
-public class ProfileActivity extends BaseActivity implements Animation.AnimationListener {
+public class ProfileActivity extends BaseActivity implements Animation.AnimationListener,IntroFragment.ChangePage {
     ViewPager mViewPager;
     View pageOne, pageTwo, pageThree, pageFour, pageFive;
     LinearLayout nextBtn, backBtn;
@@ -151,6 +151,11 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
     @Override
     public void onAnimationRepeat(Animation animation) {
 
+    }
+
+    @Override
+    public void changePage() {
+        mViewPager.setCurrentItem(1);
     }
 
 
