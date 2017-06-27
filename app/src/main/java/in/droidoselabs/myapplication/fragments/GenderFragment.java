@@ -21,7 +21,7 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
     View male_view, centre_view, female_view, black_view;
     Animation animMale, animFemale, animcentre, animBlack;
     ImageView male, female;
-    boolean isMaleClicked = false, isFemaleClicked = false, isMaleFirstClick = true, isFemaleFirstClick = true;
+    boolean isMaleClicked = false, isFemaleClicked = false, isMaleFirstClick = false, isFemaleFirstClick = false;
 
     public GenderFragment() {
         // Required empty public constructor
@@ -49,7 +49,7 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
         //ImageView
         male = (ImageView) mView.findViewById(R.id.male);
         female = (ImageView) mView.findViewById(R.id.female);
-
+        male_view.setVisibility(View.VISIBLE);
 
     }
 
@@ -95,10 +95,10 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
                         animMale = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
                                 R.anim.zi_male_view2);
                         ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
-                        anim.setDuration(1300);
+                        anim.setDuration(500);
                         ScaleAnimation anim2 = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
-                        anim2.setDuration(1000);
-                        anim2.setStartOffset(1300);
+                        anim2.setDuration(300);
+                        anim2.setStartOffset(400);
                         centre_view.startAnimation(anim);
                         black_view.startAnimation(anim2);
                         animFemale = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),

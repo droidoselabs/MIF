@@ -41,6 +41,7 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
         backBtn = (LinearLayout) findViewById(R.id.backBtn);
         lastPage=(ImageView)findViewById(R.id.lastPage);
         backBtn.setVisibility(View.INVISIBLE);
+        mViewPager.setOffscreenPageLimit(3);
 
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +78,14 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
 //                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
 //                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
 //                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
+
+                } else if (position == 1) {
+//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
+//                    pageTwo.setBackgroundResource(R.drawable.circle_view_filled);
+//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
+//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
+//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
+                    backBtn.setClickable(false);
                     backBtn.setVisibility(View.INVISIBLE);
                     if (isAnimationInvisible) {
                         zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -87,12 +96,13 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
                         isAnimationInvisible = false;
                         isAnimationVisible = true;
                     }
-                } else if (position == 1) {
+                } else if (position == 2) {
 //                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
+//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
+//                    pageThree.setBackgroundResource(R.drawable.circle_view_filled);
 //                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
 //                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
+                    backBtn.setClickable(true);
                     backBtn.setVisibility(View.VISIBLE);
                     if (isAnimationVisible) {
                         zoomOut = AnimationUtils.loadAnimation(getApplicationContext(),
@@ -102,12 +112,6 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
                         isAnimationVisible = false;
                         isAnimationInvisible = true;
                     }
-                } else if (position == 2) {
-//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageThree.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
                 } else if (position == 3) {
 //                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
 //                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
