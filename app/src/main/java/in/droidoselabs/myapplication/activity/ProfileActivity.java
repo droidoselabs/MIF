@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,6 +23,7 @@ import in.droidoselabs.myapplication.fragments.WeightFragment;
 public class ProfileActivity extends BaseActivity implements Animation.AnimationListener,IntroFragment.ChangePage {
     ViewPager mViewPager;
     View pageOne, pageTwo, pageThree, pageFour, pageFive;
+
     LinearLayout nextBtn, backBtn;
     Animation zoomOut, zoomIn;
     ImageView lastPage;

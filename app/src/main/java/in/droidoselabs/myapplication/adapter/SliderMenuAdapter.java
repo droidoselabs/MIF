@@ -1,4 +1,4 @@
-package in.droidoselabs.myapplication.activity;
+package in.droidoselabs.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import in.droidoselabs.myapplication.R;
+import in.droidoselabs.myapplication.activity.DashboardActivity;
 import in.droidoselabs.myapplication.fragments.HomeFragment;
-import in.droidoselabs.myapplication.fragments.RecipeFragment;
 import in.droidoselabs.myapplication.model.SliderItemModel;
 
 
@@ -45,9 +45,9 @@ public class SliderMenuAdapter extends RecyclerView.Adapter<SliderMenuAdapter.Vi
         SliderItemModel model = data.get(position);
         holder.tvItem.setText(model.getName());
         holder.tvItem.setCompoundDrawablesWithIntrinsicBounds(model.getIcon(), 0, 0, 0);
-        String home="Home";
+        String home = "Home";
         ((DashboardActivity) mContext).tvTitle.setText(home.toUpperCase());
-        ((DashboardActivity) mContext).startFragment(new HomeFragment(),0);
+        ((DashboardActivity) mContext).startFragment(new HomeFragment(), 0);
         ((DashboardActivity) mContext).mSlideMenu.close(true);
         holder.parentRow.setOnClickListener(new View.OnClickListener() {
             @Override

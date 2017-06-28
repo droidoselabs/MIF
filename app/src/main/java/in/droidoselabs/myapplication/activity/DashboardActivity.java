@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 import in.droidoselabs.myapplication.R;
+import in.droidoselabs.myapplication.adapter.SliderMenuAdapter;
 import in.droidoselabs.myapplication.fragments.AddFeedDialogFragment;
 import in.droidoselabs.myapplication.fragments.AddRecipeFragment;
 import in.droidoselabs.myapplication.fragments.FeedbackFragment;
