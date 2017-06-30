@@ -22,5 +22,4 @@ public class HeightFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_height, container, false);
     }
-
 }
