@@ -13,40 +13,32 @@ import android.widget.ImageView;
 
 import in.droidoselabs.myapplication.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class GenderFragment extends Fragment implements Animation.AnimationListener, View.OnClickListener {
 
-    View male_view, centre_view, female_view, black_view;
-    Animation animMale, animFemale, animcentre, animBlack;
-    ImageView male, female;
-    boolean isMaleClicked = false, isFemaleClicked = false, isMaleFirstClick = false, isFemaleFirstClick = false;
+    private View male_view, centre_view, female_view, black_view;
+    private Animation animMale, animFemale, animcentre, animBlack;
+    private ImageView male, female;
+    private boolean isMaleClicked = false, isFemaleClicked = false, isMaleFirstClick = false, isFemaleFirstClick = false;
 
     public GenderFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_gender, container, false);
         init(mView);
-
         male.setOnClickListener(this);
         female.setOnClickListener(this);
         return mView;
     }
 
     private void init(View mView) {
-        //Views
         male_view = mView.findViewById(R.id.view_male);
         female_view = mView.findViewById(R.id.view_female);
         centre_view = mView.findViewById(R.id.view_center);
         black_view = mView.findViewById(R.id.view_center_black);
-        //ImageView
         male = (ImageView) mView.findViewById(R.id.male);
         female = (ImageView) mView.findViewById(R.id.female);
         male_view.setVisibility(View.VISIBLE);
@@ -82,7 +74,7 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
                         animMale.setAnimationListener(this);
                         male_view.setAnimation(animMale);
                         isMaleFirstClick = false;
-                        isFemaleFirstClick=false;
+                        isFemaleFirstClick = false;
                     } else {
                         male_view.clearAnimation();
                         female_view.clearAnimation();
@@ -94,27 +86,22 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
                         female_view.setVisibility(View.VISIBLE);
                         animMale = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
                                 R.anim.zi_male_view2);
-                        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
                         anim.setDuration(500);
-                        ScaleAnimation anim2 = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
+                        ScaleAnimation anim2 = new ScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f);
                         anim2.setDuration(300);
                         anim2.setStartOffset(400);
                         centre_view.startAnimation(anim);
                         black_view.startAnimation(anim2);
                         animFemale = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
                                 R.anim.zo_female_view);
-//                        animBlack = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
-//                                R.anim.slideb_centre_view);
                         animMale.setAnimationListener(this);
                         animFemale.setAnimationListener(this);
-//                        animcentre.setAnimationListener(this);
                         male_view.setAnimation(animMale);
-//                        centre_view.setAnimation(animcentre);
                         female_view.setAnimation(animFemale);
-//                        black_view.setAnimation(animBlack);
                     }
                     isMaleClicked = true;
-                    isFemaleClicked=false;
+                    isFemaleClicked = false;
                 }
                 break;
             case R.id.female:
@@ -127,7 +114,7 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
                         animFemale.setAnimationListener(this);
                         female_view.setAnimation(animFemale);
                         isFemaleFirstClick = false;
-                        isMaleFirstClick=false;
+                        isMaleFirstClick = false;
                     } else {
                         male_view.clearAnimation();
                         female_view.clearAnimation();
@@ -153,8 +140,8 @@ public class GenderFragment extends Fragment implements Animation.AnimationListe
                         female_view.setAnimation(animFemale);
                         black_view.setAnimation(animBlack);
                     }
-                    isFemaleClicked=true;
-                    isMaleClicked=false;
+                    isFemaleClicked = true;
+                    isMaleClicked = false;
                 }
                 break;
             default:

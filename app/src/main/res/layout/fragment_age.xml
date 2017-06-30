@@ -5,24 +5,25 @@
     android:layout_height="match_parent"
     android:background="#25292D"
     tools:context="in.droidoselabs.myapplication.fragments.AgeFragment">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="How young are you !"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:textSize="24sp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="This will help us choose right amunt of stress your body can bear."
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:textSize="16sp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/how_young_are_you"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/help_age"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
     <in.droidoselabs.myapplication.activity.WheelPicker
         android:id="@+id/main_wheel_left"
@@ -39,9 +40,11 @@
         aigestudio:wheel_item_text_size="28sp"
         aigestudio:wheel_selected_item_text_color="@color/colorPrimary"
         aigestudio:wheel_values="@array/WheelArrayDefault2" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_watch_with_blank_face"/>
+        android:contentDescription="@string/watch"
+        android:src="@drawable/ic_watch_with_blank_face" />
 </FrameLayout>

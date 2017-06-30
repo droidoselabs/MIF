@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,96 +13,47 @@ import android.widget.LinearLayout;
 
 import in.droidoselabs.myapplication.R;
 import in.droidoselabs.myapplication.fragments.AgeFragment;
+import in.droidoselabs.myapplication.fragments.GenderFragment;
+import in.droidoselabs.myapplication.fragments.HeightFragment;
 import in.droidoselabs.myapplication.fragments.IntroFragment;
 import in.droidoselabs.myapplication.fragments.ProfileImageFragment;
-import in.droidoselabs.myapplication.fragments.HeightFragment;
-import in.droidoselabs.myapplication.fragments.GenderFragment;
 import in.droidoselabs.myapplication.fragments.WeightFragment;
 
-public class ProfileActivity extends BaseActivity implements Animation.AnimationListener,IntroFragment.ChangePage {
-    ViewPager mViewPager;
-    View pageOne, pageTwo, pageThree, pageFour, pageFive;
-
-    LinearLayout nextBtn, backBtn;
-    Animation zoomOut, zoomIn;
-    ImageView lastPage;
-    boolean isAnimationVisible = true, isAnimationInvisible = false;
+public class ProfileActivity extends BaseActivity implements Animation.AnimationListener, IntroFragment.ChangePage, View.OnClickListener {
+    private ViewPager mViewPager;
+    private LinearLayout nextBtn, backBtn;
+    private Animation zoomOut, zoomIn;
+    private ImageView lastPage;
+    private boolean isAnimationVisible = true, isAnimationInvisible = false;
+    private int page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-//        pageOne = findViewById(R.id.page_one);
-//        pageTwo = findViewById(R.id.page_two);
-//        pageThree = findViewById(R.id.page_three);
-//        pageFour = findViewById(R.id.page_four);
-//        pageFive = findViewById(R.id.page_five);
         nextBtn = (LinearLayout) findViewById(R.id.nextBtn);
         backBtn = (LinearLayout) findViewById(R.id.backBtn);
-        lastPage=(ImageView)findViewById(R.id.lastPage);
+        lastPage = (ImageView) findViewById(R.id.lastPage);
         backBtn.setVisibility(View.INVISIBLE);
         mViewPager.setOffscreenPageLimit(3);
-
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int page = mViewPager.getCurrentItem();
-                if (page > 0) {
-                    mViewPager.setCurrentItem(page - 1);
-                } else if (page == 0) {
-                    backBtn.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int page = mViewPager.getCurrentItem();
-                if (page < 4) {
-                    mViewPager.setCurrentItem(page + 1);
-                }
-            }
-        });
-
-        mViewPager.setAdapter(new SamplePagerAdapter(
-                getSupportFragmentManager()));
+        mViewPager.setAdapter(new SamplePagerAdapter(getSupportFragmentManager()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                if (position == 0) {
-//                    pageOne.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
-
-                } else if (position == 1) {
-//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
+                if (position == 1) {
                     backBtn.setClickable(false);
                     backBtn.setVisibility(View.INVISIBLE);
                     if (isAnimationInvisible) {
                         zoomIn = AnimationUtils.loadAnimation(getApplicationContext(),
                                 R.anim.zoom_in);
-
                         zoomIn.setAnimationListener(ProfileActivity.this);
                         backBtn.setAnimation(zoomIn);
                         isAnimationInvisible = false;
                         isAnimationVisible = true;
                     }
                 } else if (position == 2) {
-//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageThree.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
                     backBtn.setClickable(true);
                     backBtn.setVisibility(View.VISIBLE);
                     if (isAnimationVisible) {
@@ -114,22 +64,10 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
                         isAnimationVisible = false;
                         isAnimationInvisible = true;
                     }
-                } else if (position == 3) {
-//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFour.setBackgroundResource(R.drawable.circle_view_filled);
-//                    pageFive.setBackgroundResource(R.drawable.circular_view_light);
+                } else if (position == 3)
                     lastPage.setImageResource(R.drawable.ic_arrow_forward_black_24dp);
-                } else if (position == 4) {
-//                    pageOne.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageTwo.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageThree.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFour.setBackgroundResource(R.drawable.circular_view_light);
-//                    pageFive.setBackgroundResource(R.drawable.circle_view_filled);
+                  else if (position == 4)
                     lastPage.setImageResource(R.drawable.ic_done_all_black_24dp);
-                }
-
             }
 
             @Override
@@ -164,6 +102,24 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
         mViewPager.setCurrentItem(1);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.backBtn:
+                page = mViewPager.getCurrentItem();
+                if (page > 0)
+                    mViewPager.setCurrentItem(page - 1);
+                else if (page == 0)
+                    backBtn.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.nextBtn:
+                page = mViewPager.getCurrentItem();
+                if (page < 4)
+                    mViewPager.setCurrentItem(page + 1);
+                break;
+        }
+    }
+
 
     public class SamplePagerAdapter extends FragmentPagerAdapter {
 
@@ -173,7 +129,6 @@ public class ProfileActivity extends BaseActivity implements Animation.Animation
 
         @Override
         public Fragment getItem(int position) {
-            /** Show a Fragment based on the position of the current screen */
             if (position == 0) {
                 return new IntroFragment();
             } else if (position == 1) {

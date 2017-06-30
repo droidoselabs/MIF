@@ -15,28 +15,28 @@ import android.widget.LinearLayout;
 import in.droidoselabs.myapplication.R;
 import in.droidoselabs.myapplication.activity.ProfileActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class IntroFragment extends Fragment implements View.OnClickListener,Animation.AnimationListener {
+public class IntroFragment extends Fragment implements View.OnClickListener, Animation.AnimationListener {
 
-    Button getStarted;
-    LinearLayout view;
-    Animation getStart,viewAnim;
-    ProfileActivity profileActivity;
+    private Button getStarted;
+    private LinearLayout view;
+    private Animation getStart, viewAnim;
+    private ProfileActivity profileActivity;
+
     public IntroFragment() {
-        // Required empty public constructor
+
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View mView=inflater.inflate(R.layout.fragment_intro, container, false);
-        profileActivity=(ProfileActivity)getActivity();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View mView = inflater.inflate(R.layout.fragment_intro, container, false);
+        init(mView);
+        return mView;
+    }
+
+    private void init(View mView) {
+        profileActivity = (ProfileActivity) getActivity();
         getStarted = (Button) mView.findViewById(R.id.startBtn);
-        view =(LinearLayout) mView.findViewById(R.id.view);
+        view = (LinearLayout) mView.findViewById(R.id.view);
         getStarted.setOnClickListener(this);
         view.setOnClickListener(this);
         getStart = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
@@ -45,7 +45,6 @@ public class IntroFragment extends Fragment implements View.OnClickListener,Anim
         viewAnim = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
                 R.anim.zoom2);
         viewAnim.setAnimationListener(this);
-        return mView;
     }
 
     @Override
@@ -67,7 +66,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener,Anim
             public void run() {
                 profileActivity.changePage();
             }
-        },400);
+        }, 400);
 
     }
 
@@ -75,7 +74,8 @@ public class IntroFragment extends Fragment implements View.OnClickListener,Anim
     public void onAnimationRepeat(Animation animation) {
 
     }
-    public interface ChangePage{
+
+    public interface ChangePage {
         public void changePage();
     }
 }

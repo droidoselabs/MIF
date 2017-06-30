@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
-import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
 import android.util.Log;
@@ -19,17 +18,14 @@ import java.text.DecimalFormat;
 import in.droidoselabs.myapplication.R;
 import in.droidoselabs.myapplication.adapter.WeightAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class WeightFragment extends Fragment {
 
-    RecyclerView weightRV;
-    TextView kgWeight, lbsWeight;
-    LinearLayoutManager linearLayoutManager;
+    private RecyclerView weightRV;
+    private TextView kgWeight, lbsWeight;
+    private LinearLayoutManager linearLayoutManager;
 
     public WeightFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -37,15 +33,7 @@ public class WeightFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_weight, container, false);
-        weightRV = (RecyclerView) mView.findViewById(R.id.weight_rv);
-        kgWeight = (TextView) mView.findViewById(R.id.kgWeight);
-        lbsWeight = (TextView) mView.findViewById(R.id.lbsWeight);
-        weightRV.setAdapter(new WeightAdapter(499));
-        SnapHelper snapHelper = new LinearSnapHelper();
-        snapHelper.attachToRecyclerView(weightRV);
-
-        linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        weightRV.setLayoutManager(linearLayoutManager);
+        init(mView);
         weightRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -55,26 +43,24 @@ public class WeightFragment extends Fragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-//                // Log.e(weightRV.computeHorizontalScrollExtent() + "", "onCreateView: ");
-//                int offset = weightRV.computeHorizontalScrollOffset();
-//                int extent = weightRV.computeHorizontalScrollExtent();
-//                int range = weightRV.computeHorizontalScrollRange();
-//                float percentage = (float) (100.0 * offset / (float) (range - extent));
-//                DecimalFormat twoDForm = new DecimalFormat("#.#");
-//                String weight = String.valueOf(Double.valueOf(twoDForm.format(percentage * 2)));
-//                String weightlbs = String.valueOf(Double.valueOf(twoDForm.format(percentage * 2 * 2.2)));
-//                String[] parts = weight.split(".");
-
-                Log.i("RecyclerView", "scroll percentage:" + linearLayoutManager.findFirstVisibleItemPosition());
-                kgWeight.setText(linearLayoutManager.findFirstVisibleItemPosition()+20 + " kg");
+                kgWeight.setText(linearLayoutManager.findFirstVisibleItemPosition() + 20 + " kg");
                 DecimalFormat twoDForm = new DecimalFormat("#.#");
-               String weight = String.valueOf(Double.valueOf(twoDForm.format((linearLayoutManager.findFirstVisibleItemPosition()+20) * 2.2)));
+                String weight = String.valueOf(Double.valueOf(twoDForm.format((linearLayoutManager.findFirstVisibleItemPosition() + 20) * 2.2)));
                 lbsWeight.setText(weight + " Lbs");
-
-
             }
         });
 
         return mView;
+    }
+
+    private void init(View mView) {
+        weightRV = (RecyclerView) mView.findViewById(R.id.weight_rv);
+        kgWeight = (TextView) mView.findViewById(R.id.kgWeight);
+        lbsWeight = (TextView) mView.findViewById(R.id.lbsWeight);
+        weightRV.setAdapter(new WeightAdapter(499));
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(weightRV);
+        linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        weightRV.setLayoutManager(linearLayoutManager);
     }
 }
