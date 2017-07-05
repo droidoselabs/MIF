@@ -10,23 +10,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
+        android:maxLines="2"
         android:text="@string/choose_your_weight"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:maxLines="2"
         android:padding="15dp"
         android:text="@string/help_description"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="26sp" />
+            android:textSize="24sp" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -62,10 +64,68 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/weight_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Feet"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <NumberPicker
+                    android:id="@+id/feetPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginStart="45dp"
+                    android:theme="@style/AppTheme.Picker" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Inches"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <NumberPicker
+                    android:id="@+id/inchesPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="45dp"
+                    android:layout_marginStart="35dp"
+                    android:theme="@style/AppTheme.Picker" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="@string/how_young_are_you"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:padding="15dp"
         android:text="@string/help_age"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <in.droidoselabs.myapplication.activity.WheelPicker
         android:id="@+id/main_wheel_left"
@@ -43,7 +43,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:layout_gravity="center"
         android:contentDescription="@string/watch"
         android:src="@drawable/ic_watch_with_blank_face" />

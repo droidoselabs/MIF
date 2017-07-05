@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -23,6 +24,7 @@ public class WeightFragment extends Fragment {
     private RecyclerView weightRV;
     private TextView kgWeight, lbsWeight;
     private LinearLayoutManager linearLayoutManager;
+    NumberPicker feetPicker,inchesPicker;
 
     public WeightFragment() {
 
@@ -57,6 +59,12 @@ public class WeightFragment extends Fragment {
         weightRV = (RecyclerView) mView.findViewById(R.id.weight_rv);
         kgWeight = (TextView) mView.findViewById(R.id.kgWeight);
         lbsWeight = (TextView) mView.findViewById(R.id.lbsWeight);
+        feetPicker=(NumberPicker)mView.findViewById(R.id.feetPicker);
+        inchesPicker=(NumberPicker)mView.findViewById(R.id.inchesPicker);
+        feetPicker.setMinValue(1);
+        inchesPicker.setMinValue(1);
+        feetPicker.setMaxValue(7);
+        inchesPicker.setMaxValue(11);
         weightRV.setAdapter(new WeightAdapter(499));
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(weightRV);

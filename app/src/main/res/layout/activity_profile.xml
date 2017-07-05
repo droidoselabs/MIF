@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fragementBg"
     tools:context="in.droidoselabs.myapplication.activity.ProfileActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         tools:context=".MainActivity" />
 
     <LinearLayout
@@ -63,83 +65,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="100dp"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:visibility="gone">-->
 
-    <!--<LinearLayout-->
-    <!--android:id="@+id/backBtn"-->
-    <!--android:layout_width="40dp"-->
-    <!--android:layout_height="40dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginEnd="20dp"-->
-    <!--android:background="@drawable/circular_button"-->
-    <!--android:gravity="center">-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@drawable/ic_arrow_back_black_24dp" />-->
-    <!--</LinearLayout>-->
-
-    <!--<View-->
-    <!--android:id="@+id/page_one"-->
-    <!--android:layout_width="10dp"-->
-    <!--android:layout_height="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:background="@drawable/circular_view_light" />-->
-
-    <!--<View-->
-    <!--android:id="@+id/page_two"-->
-    <!--android:layout_width="10dp"-->
-    <!--android:layout_height="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginStart="5dp"-->
-    <!--android:background="@drawable/circular_view_light" />-->
-
-    <!--<View-->
-    <!--android:id="@+id/page_three"-->
-    <!--android:layout_width="10dp"-->
-    <!--android:layout_height="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginStart="5dp"-->
-    <!--android:background="@drawable/circular_view_light" />-->
-
-    <!--<View-->
-    <!--android:id="@+id/page_four"-->
-    <!--android:layout_width="10dp"-->
-    <!--android:layout_height="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginStart="5dp"-->
-    <!--android:background="@drawable/circular_view_light" />-->
-
-    <!--<View-->
-    <!--android:id="@+id/page_five"-->
-    <!--android:layout_width="10dp"-->
-    <!--android:layout_height="10dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginStart="5dp"-->
-    <!--android:background="@drawable/circular_view_light" />-->
-
-    <!--<LinearLayout-->
-    <!--android:id="@+id/nextBtn"-->
-    <!--android:layout_width="40dp"-->
-    <!--android:layout_height="40dp"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:layout_marginStart="20dp"-->
-    <!--android:background="@drawable/circular_button"-->
-    <!--android:gravity="center">-->
-
-    <!--<ImageView-->
-    <!--android:id="@+id/lastPage"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@drawable/ic_arrow_forward_black_24dp" />-->
-    <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
 
 </RelativeLayout>
